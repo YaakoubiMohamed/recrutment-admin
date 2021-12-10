@@ -1,0 +1,11 @@
+.error{
+    color: red;
+}
+.login-wrapper{
+    background-image: url(../../assets/img/bg.jpg) !important;
+    /*background-position: center top;*/
+    background-size: 100% auto;
+}
+.btn{
+    color: #fff !important;
+}

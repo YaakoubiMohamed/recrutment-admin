@@ -1,0 +1,146 @@
+<div class="content ">
+    <!-- MODAL STICK UP  -->
+    <div class="modal fade stick-up" id="addNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header clearfix ">
+            <button aria-label="" type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-icon">close</i>
+            </button>
+            <h4 class="p-b-5"><span class="semi-bold">New</span> App</h4>
+          </div>
+          <div class="modal-body">
+            <p class="small-text">Create a new app using this form, make sure you fill them all</p>
+            <form role="form">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <label>name</label>
+                    <input id="appName" type="text" class="form-control" placeholder="Name of your app">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group form-group-default">
+                    <label>Description</label>
+                    <input id="appDescription" type="text" class="form-control" placeholder="Tell us more about it">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group form-group-default">
+                    <label>Price</label>
+                    <input id="appPrice" type="text" class="form-control" placeholder="your price">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group form-group-default">
+                    <label>Notes</label>
+                    <input id="appNotes" type="text" class="form-control" placeholder="a note">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button aria-label="" id="add-app" type="button" class="btn btn-primary  btn-cons">Add</button>
+            <button aria-label="" type="button" class="btn btn-cons" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+      <div class=" container-fluid   container-fixed-lg sm-p-l-0 sm-p-r-0">
+        <div class="inner">
+          <!-- START BREADCRUMB -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">{{quiz.titre}}</li>
+          </ol>
+          <!-- END BREADCRUMB -->
+        </div>
+      </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- START CONTAINER FLUID -->
+    <div class=" container-fluid   container-fixed-lg bg-white">
+      <!-- START card -->
+      <div class="card card-transparent">
+        <div class="card-header ">
+          <div class="card-title">
+          </div>
+          <div class="pull-right">
+            <div class="col-xs-12">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="card-body">
+            <form role="form" [formGroup]="QForm">
+                <div class="form-group">
+                  <label>Titre</label>
+                  <input type="email" formControlName="titre" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Choix</label> <br>
+                    <input type="radio" value="A" formControlName="reponse">
+                    A:<input type="text" formControlName="ch1" class="form-control"><br>
+                    <input type="radio" value="B" formControlName="reponse">
+                    B:<input type="text" formControlName="ch2" class="form-control"><br>
+                    <input type="radio" value="C" formControlName="reponse">
+                    C:<input type="text" formControlName="ch3" class="form-control"><br>
+                    <input type="radio" value="D" formControlName="reponse">
+                    D:<input type="text" formControlName="ch4" class="form-control"><br>
+                </div>
+                <div class="form-group">
+                  <label></label>
+                  <input *ngIf="editable == false" type="button" class="btn btn-primary" value="Ajouter" (click)="Add()">
+                  <input *ngIf="editable" type="button" class="btn btn-success" value="Modifier" (click)="edit()">
+                </div>
+            </form>             
+        </div>
+      </div>
+      <!-- END card -->
+      <div *ngFor="let question of questions">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{question.titre}}
+              </h3>
+          </div>
+          <div class="panel-body">
+            <div class="radio" [class.etat]="question.reponse == 'A'">
+              <label>
+                 {{question.ch1}}
+              </label>
+            </div>
+            <div class="radio" [class.etat]="question.reponse == 'B'">
+              <label>
+                {{question.ch2}}
+              </label>
+            </div>
+            <div class="radio" [class.etat]="question.reponse == 'C'">
+              <label>
+                {{question.ch3}}
+              </label>
+            </div>
+            <div class="radio" [class.etat]="question.reponse == 'D'">
+              <label>
+                {{question.ch4}}
+              </label>
+            </div>
+    
+          </div>
+          <div class="panel-footer">
+            <a (click)="update(question)" class="btn btn-success " role="button">Modifier</a>
+            <a (click)="delete(question)" class="btn btn-danger " role="button">Supprimer</a>
+          </div>
+        </div>        
+      </div>
+    </div>
+    <!-- END CONTAINER FLUID -->
+</div>

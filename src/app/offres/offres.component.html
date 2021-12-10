@@ -1,0 +1,58 @@
+<div class="content ">    
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+      <div class=" container-fluid   container-fixed-lg sm-p-l-0 sm-p-r-0">
+        <div class="inner">
+          <!-- START BREADCRUMB -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Offres</li>
+          </ol>
+          <!-- END BREADCRUMB -->
+        </div>
+      </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- START CONTAINER FLUID -->
+    <div class="row">
+      <!-- START card -->
+      <div class="card card-transparent">
+        <div class="card-header ">
+          <div class="card-title"><a (click)="Add()" class="btn btn-primary">Ajouter</a>
+          </div>
+          <div class="pull-right">
+            <div class="col-xs-12">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="card-body">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table">
+                <thead>
+                  <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Departement</th>
+                    <th>Date limite</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let offre of offres">
+                        <td>{{offre.titre}}</td>
+                        <td>{{offre.description}}</td>
+                        <td>{{offre.departement}}</td>
+                        <td width="10%">{{offre.date_limited}}</td>
+                        <td width="15%">
+                          <a (click)="Edit(offre)" class="btn btn-success">Modifier</a>
+                            <a (click)="Supprimer(offre)" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>              
+        </div>
+      </div>
+      <!-- END card -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+</div>
